@@ -37,6 +37,7 @@ namespace Rivet {
       book(_hist_qt, "jetqt", {0.0,  2.33483823e-02,  6.48683298e-02,  1.38702398e-01,
 	    2.70000000e-01,  5.03483823e-01,  9.18683298e-01,  1.65702398e+00,  2.97000000e+00});
       _inclusive_xs=0.0;
+      book(_hist_dphi, "jetpdhi", 9, 3.14159/2.0 , 3.14159);
 
     }
 
@@ -94,6 +95,8 @@ namespace Rivet {
 	  _hist_jeteta->fill(jets[i].eta());
 	  float qt = sqrt( (jetmom.px() + leptonMom.px() )/GeV*(jetmom.px() + leptonMom.px() )/GeV  + (jetmom.py() + leptonMom.py() )/GeV*(jetmom.py() + leptonMom.py() )/GeV           )           ;
 	  _hist_qt->fill(qt/sqrt(Q2));
+          float dphi = mapAngle0ToPi(leptonMom.phi()-jets[i].phi());
+	  _hist_dphi->fill(dphi);
       }
       
     }
@@ -114,7 +117,7 @@ namespace Rivet {
 
 
     /// The histograms.
-    Histo1DPtr _hist_Q2, _hist_y, _hist_x, _hist_ept, _hist_jetpt, _hist_qt, _hist_jeteta;
+    Histo1DPtr _hist_Q2, _hist_y, _hist_x, _hist_ept, _hist_jetpt, _hist_qt, _hist_jeteta, _hist_dphi;
     double _inclusive_xs;
 
   };
