@@ -94,7 +94,7 @@ namespace Rivet {
 	  _hist_jeteta->fill(jets[i].eta());
 	  float qt = sqrt( (jetmom.px() + leptonMom.px() )/GeV*(jetmom.px() + leptonMom.px() )/GeV  + (jetmom.py() + leptonMom.py() )/GeV*(jetmom.py() + leptonMom.py() )/GeV           )           ;
 	  _hist_qt->fill(qt/sqrt(Q2));
-          float dphi = mapAngle0ToPi(leptonMom.phi()-jets[i].phi());
+          float dphi = 3.14159265359- mapAngle0ToPi(leptonMom.phi()-jets[i].phi());
 	  _hist_dphi->fill(dphi);
       }
       
